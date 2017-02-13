@@ -90,10 +90,10 @@ namespace EdgeDeflector
             registeredapps_key.Close();
         }
 
-        static bool IsBrowserUri(string uristring)
+        static bool IsUri(string uristring)
         {
             Uri uri = new Uri(uristring);
-            return (IsHttpUri(uristring) || IsMsEdgeUri(uristring)) && uri.IsWellFormedOriginalString();
+            return uri.IsWellFormedOriginalString();
         }
 
         static bool IsHttpUri(string uri)
@@ -125,7 +125,7 @@ namespace EdgeDeflector
 
         static void OpenUri(string uri)
         {
-            if (!IsBrowserUri(uri))
+            if (!IsUri(uri) || !IsHttpUri(uri))
             {
                 Environment.Exit(1);
             }
