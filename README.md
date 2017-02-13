@@ -8,7 +8,7 @@ System requirements: Windows 10, your favorite web browser
 
 # Installation
 
-  1. Download the latest version of EdgeDeflector.exe from [GitHub releases](https://github.com/da2x/EdgeDeflector/releases)
+  1. **Download** the latest version of EdgeDeflector.exe from [GitHub releases](https://github.com/da2x/EdgeDeflector/releases)
   2. Copy the downloaded executable to `C:\Program Files\` or anywhere else it can be stored permanently
   3. Run the program once to configure your system
   4. Choose `EdgeDeflector` and `Always use this app` in the dialog
