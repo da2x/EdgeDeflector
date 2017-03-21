@@ -4,7 +4,9 @@
 
 You’ll never see EdgeDeflector ever again after installing it. It does its thing transparently in the background and only runs when a link needs to be deflected away from Microsoft Edge.
 
-System requirements: Windows 10, your favorite web browser
+System requirements: Windows 10, and your favorite web browser.
+
+Read more about [how EdgeDeflector works](https://ctrl.blog/entry/edgedeflector-default-browser) and why it was created.
 
 # Installation
 
