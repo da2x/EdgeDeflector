@@ -3,6 +3,7 @@ using System;
 using System.Diagnostics;
 using System.Security.Principal;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace EdgeDeflector
 {
@@ -26,6 +27,21 @@ namespace EdgeDeflector
 
         private static void RegisterProtocolHandler()
         {
+            RegistryKey engine_key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Clients\EdgeUriDeflector", true);
+            if (engine_key == null)
+            {
+                engine_key = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\Clients\EdgeUriDeflector", true);
+            }
+
+            DialogResult res = MessageBox.Show("Would you like to divert Bing to a different search engine?", "Edge Deflector",MessageBoxButtons.YesNo);
+            if(res==DialogResult.Yes)
+            {
+                DialogResult res2 = MessageBox.Show("Press Yes for Google and No for DuckDuckGo", "Edge Deflector", MessageBoxButtons.YesNo);
+                if (res2 == DialogResult.Yes) engine_key.SetValue("SearchEngine", "Google");
+                else engine_key.SetValue("SearchEngine", "DuckDuckGo");
+            }
+            else engine_key.SetValue("SearchEngine", "Bing");
+
             RegistryKey uriclass_key = Registry.ClassesRoot.OpenSubKey("EdgeUriDeflector", true);
             if (uriclass_key == null)
             {
@@ -110,10 +126,29 @@ namespace EdgeDeflector
 
         static string RewriteMsEdgeUriSchema(string uri)
         {
+            RegistryKey engine_key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Clients\EdgeUriDeflector", true);
+
+            string engine = (string) engine_key.GetValue("SearchEngine");
             string msedge_protocol_pattern = "^microsoft-edge:/*";
 
             Regex rgx = new Regex(msedge_protocol_pattern);
             string new_uri = rgx.Replace(uri, string.Empty);
+
+            if (engine == "Bing") ;
+            else if (engine == "Google")
+            {
+                int index = new_uri.IndexOf("&");
+                if (index > 0)
+                    new_uri = new_uri.Substring(0, index);
+                new_uri = new_uri.Replace("bing.com/search?q=", "google.com/search?q=");
+            }
+            else if (engine == "DuckDuckGo")
+            {
+                int index = new_uri.IndexOf("&");
+                if (index > 0)
+                    new_uri = new_uri.Substring(0, index);
+                new_uri = new_uri.Replace("bing.com/search?q=", "duckduckgo.com/?q=");
+            }
 
             if (IsHttpUri(new_uri))
             {
