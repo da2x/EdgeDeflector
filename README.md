@@ -1,21 +1,21 @@
-# EdgeDeflector
+# EdgeAndBingDeflector
 
-*EdgeDeflector* is  a small helper application that intercepts URIs that force-open web links in Microsoft Edge and redirects it to the system’s default web browser. This allows you to use Windows features like the Cortana assistant and built-in help links with the browser of your choice instead of being forced to use Microsoft Edge.
+*EdgeAndBingDeflector* is  a small helper application that intercepts URIs that force-open web links in Microsoft Edge and redirects it to the system’s default web browser. This allows you to use Windows features like the Cortana assistant and built-in help links with the browser of your choice instead of being forced to use Microsoft Edge.
 
 It can also convert Bing searches to other engines. Currently, Google and DuckDuckGo are supported.
 
-You’ll never see EdgeDeflector ever again after installing it. It does its thing transparently in the background and only runs when a link needs to be deflected away from Microsoft Edge.
+You’ll never see EdgeAndBingDeflector ever again after installing it. It does its thing transparently in the background and only runs when a link needs to be deflected away from Microsoft Edge.
 
-System requirements: Windows 10, and your favorite web browser.
+System requirements: Windows 10, and your favorite web browser and search engine.
 
 Read more about [how EdgeDeflector works](https://ctrl.blog/entry/edgedeflector-default-browser) and why it was created.
 
 # Installation
 
-  1. **Download** the latest version of EdgeDeflector from [GitHub releases](https://github.com/da2x/EdgeDeflector/releases)
+  1. **Download** the latest version of EdgeAndBingDeflector from [GitHub releases](https://github.com/radialapps/EdgeAndBingDeflector/releases)
   2. Run the installer once to configure your system
 
-You may need to repeat the above steps after installing major feature updates to Windows through Windows Update. You can subscribe to the [AppCast feed](https://github.com/da2x/EdgeDeflector/releases.atom) to be notified of any new releases.
+You may need to repeat the above steps after installing major feature updates to Windows through Windows Update.
 
 If you dismiss the dialog, or choose the wrong app; you can apply the change  in the Windows Settings  app: Apps: Default apps: Choose default apps by protocol: microsoft-edge.
 
