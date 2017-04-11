@@ -14,6 +14,7 @@ Read more about [how EdgeDeflector works](https://ctrl.blog/entry/edgedeflector-
 
   1. **Download** the latest version of EdgeAndBingDeflector from [GitHub releases](https://github.com/radialapps/EdgeAndBingDeflector/releases)
   2. Run the installer once to configure your system
+  3. You will be asked whether you want to divert your searches to Google or DuckDuckGo.
 
 You may need to repeat the above steps after installing major feature updates to Windows through Windows Update.
 
