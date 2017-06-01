@@ -17,6 +17,6 @@ You may need to repeat the above steps after installing major feature updates to
 
 If you dismiss the dialog, or choose the wrong app; you can apply the change  in the Windows Settings  app: Apps: Default apps: Choose default apps by protocol: microsoft-edge.
 
-If EdgeDeflector isn’t listed in either locations, try running it one more time; or lastly restarting your PC before you try again. (This last option actually helps if the System Registry is locked up or Windows is being suborn.)
+If EdgeDeflector isn’t listed in either locations, try running it one more time; or lastly restarting your PC before you try again. (This last option actually helps if the System Registry is locked up or Windows is being stubborn.)
 
 You don’t need to specify your browser of choice in EdgeDeflector. It will pick up on the system configured default from Windows Settings app: Apps: Default apps: Web browser.
