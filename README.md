@@ -13,9 +13,9 @@ Read more about [how EdgeDeflector works](https://ctrl.blog/entry/edgedeflector-
   1. **Download** the latest version of EdgeDeflector from [GitHub releases](https://github.com/da2x/EdgeDeflector/releases)
   2. Run the installer once to configure your system
 
-You may need to repeat the above steps after installing major feature updates to Windows through Windows Update. You can subscribe to the [AppCast feed](https://github.com/da2x/EdgeDeflector/releases.atom) to be notified of any new releases.
+You may need to **repeat the above steps after installing major feature updates to Windows** through Windows Update. You can subscribe to the [AppCast feed](https://github.com/da2x/EdgeDeflector/releases.atom) to be notified of any new releases.
 
-If you dismiss the dialog, or choose the wrong app; you can apply the change  in the Windows Settings  app: Apps: Default apps: Choose default apps by protocol: microsoft-edge.
+If you dismiss the initial dialog to choose to use EdgeDeflector, or choose the wrong app; you can apply the change  in the Windows Settings app: Apps: Default apps: Choose default apps by protocol: microsoft-edge.
 
 If EdgeDeflector isn’t listed in either locations, try running it one more time; or lastly restarting your PC before you try again. (This last option actually helps if the System Registry is locked up or Windows is being stubborn.)
 
