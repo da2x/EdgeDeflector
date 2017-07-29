@@ -110,6 +110,11 @@ namespace EdgeDeflector
             return uri.StartsWith("microsoft-edge:", StringComparison.OrdinalIgnoreCase) && !uri.Contains(" ");
         }
 
+        static bool IsNewCortanaURI(string uri)
+        {
+            return (uri.Contains("launchContext1=Microsoft.Windows.Cortana"));
+        }
+
         static string GetURIFromCortanaLink(string uri)
         {
             NameValueCollection queryCollection = HttpUtility.ParseQueryString(uri);
@@ -135,11 +140,14 @@ namespace EdgeDeflector
             }
 
             // May be new-style Cortana URI - try and split out
-            string cortanaUri = GetURIFromCortanaLink(uri);
-            if (IsHttpUri(cortanaUri))
+            if (IsNewCortanaURI(uri))
             {
-                // Correctly form the new URI before returning
-                return EncodeCortanaParameters(cortanaUri);
+                string cortanaUri = GetURIFromCortanaLink(uri);
+                if (IsHttpUri(cortanaUri))
+                {
+                    // Correctly form the new URI before returning
+                    return EncodeCortanaParameters(cortanaUri);
+                }
             }
 
             return "http://" + new_uri;
