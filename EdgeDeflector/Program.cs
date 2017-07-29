@@ -1,8 +1,10 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Security.Principal;
 using System.Text.RegularExpressions;
+using System.Web;
 
 namespace EdgeDeflector
 {
@@ -108,6 +110,18 @@ namespace EdgeDeflector
             return uri.StartsWith("microsoft-edge:", StringComparison.OrdinalIgnoreCase) && !uri.Contains(" ");
         }
 
+        static string GetURIFromCortanaLink(string uri)
+        {
+            NameValueCollection queryCollection = HttpUtility.ParseQueryString(uri);
+            return HttpUtility.UrlDecode(queryCollection["url"]);
+        }
+
+        static string EncodeCortanaParameters(string cortanaUri)
+        {
+            Uri uri = new Uri(cortanaUri);
+            return uri.AbsoluteUri + "?" + HttpUtility.UrlEncode(uri.Query);
+        }
+
         static string RewriteMsEdgeUriSchema(string uri)
         {
             string msedge_protocol_pattern = "^microsoft-edge:/*";
@@ -118,6 +132,14 @@ namespace EdgeDeflector
             if (IsHttpUri(new_uri))
             {
                 return new_uri;
+            }
+
+            // May be new-style Cortana URI - try and split out
+            string cortanaUri = GetURIFromCortanaLink(uri);
+            if (IsHttpUri(cortanaUri))
+            {
+                // Correctly form the new URI before returning
+                return EncodeCortanaParameters(cortanaUri);
             }
 
             return "http://" + new_uri;
