@@ -94,8 +94,19 @@ namespace EdgeDeflector
 
         static bool IsUri(string uristring)
         {
-            Uri uri = new Uri(uristring);
-            return uri.IsWellFormedOriginalString();
+            try
+            {
+                Uri uri = new Uri(uristring);
+                return uri.IsWellFormedOriginalString();
+            }
+            catch (System.UriFormatException)
+            {
+                return false;
+            }
+            catch (ArgumentNullException)
+            {
+                return false;
+            }
         }
 
         static bool IsHttpUri(string uri)
@@ -112,7 +123,7 @@ namespace EdgeDeflector
 
         static bool IsNewCortanaURI(string uri)
         {
-            return (uri.Contains("launchContext1=Microsoft.Windows.Cortana"));
+            return uri.Contains("launchContext1=Microsoft.Windows.Cortana");
         }
 
         static string GetURIFromCortanaLink(string uri)
@@ -177,7 +188,7 @@ namespace EdgeDeflector
                 OpenUri(uri);
             }
             // Install when running without argument
-            else if (args.Equals(null) || args.Length == 0)
+            else if (args.Length == 0 || args.Equals(null))
             {
                 if (!IsElevated())
                 {
