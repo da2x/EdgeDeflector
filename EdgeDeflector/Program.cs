@@ -1,9 +1,11 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Security.Principal;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using System.Web;
 
 namespace EdgeDeflector
 {
@@ -108,8 +110,19 @@ namespace EdgeDeflector
 
         static bool IsUri(string uristring)
         {
-            Uri uri = new Uri(uristring);
-            return uri.IsWellFormedOriginalString();
+            try
+            {
+                Uri uri = new Uri(uristring);
+                return uri.IsWellFormedOriginalString();
+            }
+            catch (System.UriFormatException)
+            {
+                return false;
+            }
+            catch (ArgumentNullException)
+            {
+                return false;
+            }
         }
 
         static bool IsHttpUri(string uri)
@@ -124,6 +137,23 @@ namespace EdgeDeflector
             return uri.StartsWith("microsoft-edge:", StringComparison.OrdinalIgnoreCase) && !uri.Contains(" ");
         }
 
+        static bool IsNonAuthoritativeWithUrlQueryParameter(string uri)
+        {
+            return uri.Contains("microsoft-edge:?") && uri.Contains("&url=");
+        }
+
+        static string GetURIFromCortanaLink(string uri)
+        {
+            NameValueCollection queryCollection = HttpUtility.ParseQueryString(uri);
+            return HttpUtility.UrlDecode(queryCollection["url"]);
+        }
+
+        static string EncodeCortanaParameters(string cortanaUri)
+        {
+            Uri uri = new Uri(cortanaUri);
+            return uri.AbsoluteUri + "?" + HttpUtility.UrlEncode(uri.Query);
+        }
+
         static string RewriteMsEdgeUriSchema(string uri)
         {
             RegistryKey engine_key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Clients\EdgeUriDeflector", true);
@@ -134,8 +164,7 @@ namespace EdgeDeflector
             Regex rgx = new Regex(msedge_protocol_pattern);
             string new_uri = rgx.Replace(uri, string.Empty);
 
-            if (engine == "Bing") ;
-            else if (engine == "Google")
+            if (engine == "Google")
             {
                 int index = new_uri.IndexOf("&");
                 if (index > 0)
@@ -153,6 +182,17 @@ namespace EdgeDeflector
             if (IsHttpUri(new_uri))
             {
                 return new_uri;
+            }
+
+            // May be new-style Cortana URI - try and split out
+            if (IsNonAuthoritativeWithUrlQueryParameter(uri))
+            {
+                string cortanaUri = GetURIFromCortanaLink(uri);
+                if (IsHttpUri(cortanaUri))
+                {
+                    // Correctly form the new URI before returning
+                    return EncodeCortanaParameters(cortanaUri);
+                }
             }
 
             return "http://" + new_uri;
@@ -182,7 +222,7 @@ namespace EdgeDeflector
                 OpenUri(uri);
             }
             // Install when running without argument
-            else if (args.Equals(null) || args.Length == 0)
+            else if (args.Length == 0 || args.Equals(null))
             {
                 if (!IsElevated())
                 {
