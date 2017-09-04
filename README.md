@@ -20,3 +20,21 @@ If you dismiss the initial dialog to choose to use EdgeDeflector, or choose the 
 If EdgeDeflector isn’t listed in either locations, try running it one more time; or lastly restarting your PC before you try again. (This last option actually helps if the System Registry is locked up or Windows is being stubborn.)
 
 You don’t need to specify your browser of choice in EdgeDeflector. It will pick up on the system configured default from Windows Settings app: Apps: Default apps: Web browser.
+
+# FAQ
+
+## Will searches inside Cortana still use Bing?
+
+Yes. EdgeDeflector doesn’t interfere with either Cortana or the Windows shell in any way. All that EdgeDeflector does is intercept links as you open them in order to rewrite them to open with your preferred web browser.
+
+## “Intercepting links” sounds like it would affect my privacy?
+
+Yes it does, but no. Everything is done on your local computer. EdgeDeflector rewrites links which are forced by the Windows shell to open inside Microsoft Edge to open using your default web browser instead. No data is collected about you nor even stored on your local computer.
+
+## Will EdgeDeflector redirect Bing searches to Google?
+
+[No.](https://github.com/da2x/EdgeDeflector/wiki/Not-replacing-your-search-engine) You can use an extension in your favorite web browser to achieve this.
+
+## How do I uninstall EdgeDeflector?
+
+By following [these instructions](https://github.com/da2x/EdgeDeflector/wiki/Uninstall).
