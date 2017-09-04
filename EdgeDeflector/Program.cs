@@ -144,6 +144,7 @@ namespace EdgeDeflector
 
             Regex rgx = new Regex(msedge_protocol_pattern);
             string new_uri = rgx.Replace(uri, string.Empty);
+			new_uri = new_uri.replace("bing.com", "google.com");
 
             if (IsHttpUri(new_uri))
             {
