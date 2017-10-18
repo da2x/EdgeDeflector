@@ -6,7 +6,7 @@ You’ll never see EdgeDeflector ever again after installing it. It does its thi
 
 System requirements: Windows 10, and your favorite web browser.
 
-Read more about [how EdgeDeflector works](https://ctrl.blog/entry/edgedeflector-default-browser) and why it was created.
+Read more about [how EdgeDeflector works](https://www.ctrl.blog/entry/edgedeflector-default-browser) and why it was created.
 
 # Installation
 
