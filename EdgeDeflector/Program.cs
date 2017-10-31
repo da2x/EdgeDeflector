@@ -123,19 +123,13 @@ namespace EdgeDeflector
 
         static bool IsNonAuthoritativeWithUrlQueryParameter(string uri)
         {
-            return uri.Contains("microsoft-edge:?") && uri.Contains("&url=");
+            return uri.Contains("microsoft-edge:?") && uri.Contains("&url=") && uri.Contains("bing");
         }
 
         static string GetURIFromCortanaLink(string uri)
         {
             NameValueCollection queryCollection = HttpUtility.ParseQueryString(uri);
-            return HttpUtility.UrlDecode(queryCollection["url"]);
-        }
-
-        static string EncodeCortanaParameters(string cortanaUri)
-        {
-            Uri uri = new Uri(cortanaUri);
-            return uri.AbsoluteUri + "?" + HttpUtility.UrlEncode(uri.Query);
+            return queryCollection["url"];
         }
 
         static string RewriteMsEdgeUriSchema(string uri)
@@ -157,10 +151,11 @@ namespace EdgeDeflector
                 if (IsHttpUri(cortanaUri))
                 {
                     // Correctly form the new URI before returning
-                    return EncodeCortanaParameters(cortanaUri);
+                    return cortanaUri;
                 }
             }
 
+            // defer fallback to web browser
             return "http://" + new_uri;
         }
 
@@ -187,6 +182,7 @@ namespace EdgeDeflector
                 string uri = RewriteMsEdgeUriSchema(args[0]);
                 OpenUri(uri);
             }
+
             // Install when running without argument
             else if (args.Length == 0 || args.Equals(null))
             {
