@@ -125,6 +125,10 @@ namespace EdgeDeflector
         {
             return uri.Contains("microsoft-edge:?") && uri.Contains("&url=") && uri.Contains("bing");
         }
+        static bool IsCortanaContinueToPc(string uri)
+        {
+            return uri.Contains("microsoft-edge:?") && uri.Contains("&url=");
+        }
 
         static string GetURIFromCortanaLink(string uri)
         {
@@ -145,7 +149,7 @@ namespace EdgeDeflector
             }
 
             // May be new-style Cortana URI - try and split out
-            if (IsNonAuthoritativeWithUrlQueryParameter(uri))
+            if (IsNonAuthoritativeWithUrlQueryParameter(uri) || IsCortanaContinueToPc(uri))
             {
                 string cortanaUri = GetURIFromCortanaLink(uri);
                 if (IsHttpUri(cortanaUri))
