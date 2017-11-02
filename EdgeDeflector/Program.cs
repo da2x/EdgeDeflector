@@ -123,7 +123,7 @@ namespace EdgeDeflector
 
         static bool IsNonAuthoritativeWithUrlQueryParameter(string uri)
         {
-            return uri.Contains("microsoft-edge:?") && uri.Contains("&url=") && uri.Contains("bing");
+            return uri.Contains("microsoft-edge:?") && uri.Contains("&url=");
         }
 
         static string GetURIFromCortanaLink(string uri)
