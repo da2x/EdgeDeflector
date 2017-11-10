@@ -1,4 +1,10 @@
-﻿using Microsoft.Win32;
+/*
+ * Copyright © 2017 Daniel Aleksandersen
+ * SPDX-License-Identifier: MIT
+ * License-Filename: LICENSE
+ */
+
+using Microsoft.Win32;
 using System;
 using System.Collections.Specialized;
 using System.Diagnostics;
