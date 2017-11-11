@@ -1,0 +1,7 @@
+microsoft-edge:https://www.example.com/
+microsoft-edge://https://www.example.com/
+microsoft-edge:https://www.example.com/?url=https%3A%2F%2Fwww.example.net%2F
+microsoft-edge:?launchContext1=Microsoft.Windows.Cortana_cw5n1h2txyewy&url=https%3A%2F%2Fwww.example.com%2F
+microsoft-edge://?launchContext1=Microsoft.Windows.Cortana_cw5n1h2txyewy&url=https%3A%2F%2Fwww.example.com%2%3Furl%3Dhttps%253A%252F%252Fwww.example.net%252F
+microsoft-edge:?launchContext1=TimelineActivityId&launchContext2=5a1c4c0f-0f36-4942-8612-ba551bee378a&url=https%3A%2F%2Fwww.example.com%2F
+microsoft-edge:https://www.example.com/?url=https%3A%2F%2Fwww.example.net%2F
