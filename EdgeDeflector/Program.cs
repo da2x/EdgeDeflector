@@ -190,7 +190,7 @@ namespace EdgeDeflector
             }
 
             // Install when running without argument
-            else if (args.Length == 0 || args.Equals(null))
+            else if (args.Length == 0)
             {
                 if (!IsElevated())
                 {
