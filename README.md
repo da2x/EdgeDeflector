@@ -23,6 +23,10 @@ You don’t need to specify your browser of choice in EdgeDeflector. It will pic
 
 # FAQ
 
+## It isn’t working!
+
+Try [these troubleshooting steps](https://github.com/da2x/EdgeDeflector/wiki/Troubleshooting).
+
 ## Will searches inside Cortana still use Bing?
 
 Yes. EdgeDeflector doesn’t interfere with either Cortana or the Windows shell in any way. All that EdgeDeflector does is intercept links as you open them in order to rewrite them to open with your preferred web browser.
