@@ -117,14 +117,14 @@ namespace EdgeDeflector
 
         static bool IsHttpUri(string uri)
         {
-            uri = uri.ToLower();
-            return uri.StartsWith("http://", StringComparison.OrdinalIgnoreCase) || uri.StartsWith("https://", StringComparison.OrdinalIgnoreCase);
+            uri = uri.ToUpperInvariant();
+            return uri.StartsWith("HTTP://", StringComparison.OrdinalIgnoreCase) || uri.StartsWith("HTTPS://", StringComparison.OrdinalIgnoreCase);
         }
 
         static bool IsMsEdgeUri(string uri)
         {
-            uri = uri.ToLower();
-            return uri.StartsWith("microsoft-edge:", StringComparison.OrdinalIgnoreCase) && !uri.Contains(" ");
+            uri = uri.ToUpperInvariant();
+            return uri.StartsWith("MICROSOFT-EDGE:", StringComparison.OrdinalIgnoreCase) && !uri.Contains(" ");
         }
 
         static bool IsNonAuthoritativeWithUrlQueryParameter(string uri)
