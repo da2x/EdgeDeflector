@@ -12,7 +12,7 @@ BrandingText " "
 VIAddVersionKey "ProductName" "${PRODUCT} Installer"
 VIAddVersionKey "FileVersion" "${VERSION_1}.${VERSION_2}.${VERSION_3}.${VERSION_4}"
 VIAddVersionKey "FileDescription" "Install ${PRODUCT} ${VERSION_1}.${VERSION_2}.${VERSION_3}.${VERSION_4}."
-VIAddVersionKey "LegalCopyright" "Copyright ©"
+VIAddVersionKey "LegalCopyright" "Copyright © 2021"
 
 VIFileVersion "${VERSION_1}.${VERSION_2}.${VERSION_3}.${VERSION_4}"
 VIProductVersion "${VERSION_1}.${VERSION_2}.${VERSION_3}.${VERSION_4}"
