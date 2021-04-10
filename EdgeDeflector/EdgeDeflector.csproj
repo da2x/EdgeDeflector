@@ -38,7 +38,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -49,7 +48,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>EdgeDeflector.Program</StartupObject>
@@ -91,4 +89,7 @@
     <Content Include="Icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="Installer" Condition=" '$(Configuration)' == 'Release' " AfterTargets="Build" Inputs="resources\nsis_installer.nsi;bin\Release\EdgeDeflector.exe" Outputs="bin\Release\EdgeDeflector_install.exe">
+    <Exec command="&quot;C:\Program Files (x86)\NSIS\makensis.exe&quot; resources\nsis_installer.nsi" />
+  </Target>
 </Project>
