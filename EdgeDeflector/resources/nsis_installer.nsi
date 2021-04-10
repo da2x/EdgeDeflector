@@ -52,7 +52,7 @@ Section "Installer"
   WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT}" "NoRepair" 1
   WriteUninstaller "${PRODUCT}_uninstall.exe"
 
-  ExecShell "open" "microsoft-edge:https://github.com/da2x/EdgeDeflector/wiki/Thank-you-for-installing-EdgeDeflector"
+  ExecShell "open" "microsoft-edge:https://www.daniel.priv.no/tools/edgedeflector/post-install.html"
 
 SectionEnd
 
