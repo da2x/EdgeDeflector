@@ -1,24 +1,32 @@
+Unicode True
+
 ; Installer for EdgeDeflector
 
-;--------------------------------
+BrandingText " "
 
 !define PRODUCT "EdgeDeflector"
+!define DESCRIPTION "Open MICROSOFT-EDGE:// links in your default web browser."
+
+!getdllversion "..\bin\Release\${PRODUCT}.exe" VERSION_
+
+VIAddVersionKey "ProductName" "${PRODUCT} Installer"
+VIAddVersionKey "FileVersion" "${VERSION_1}.${VERSION_2}.${VERSION_3}.${VERSION_4}"
+VIAddVersionKey "FileDescription" "Install ${PRODUCT} ${VERSION_1}.${VERSION_2}.${VERSION_3}.${VERSION_4}."
+VIAddVersionKey "LegalCopyright" "Copyright ©"
+
+VIFileVersion "${VERSION_1}.${VERSION_2}.${VERSION_3}.${VERSION_4}"
+VIProductVersion "${VERSION_1}.${VERSION_2}.${VERSION_3}.${VERSION_4}"
 
 Name "${PRODUCT} Installer"
 
 OutFile "..\bin\Release\${PRODUCT}_install.exe"
 
 ; Default installation directory
-InstallDir $PROGRAMFILES\${PRODUCT}
+InstallDir $LOCALAPPDATA\Programs\${PRODUCT}
 
 ; Store install dir in the registry
-InstallDirRegKey HKLM "Software\${PRODUCT}" "Install_Dir"
+InstallDirRegKey HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\${PRODUCT}.exe" "Path"
 
-; Request application privileges for UAC
-RequestExecutionLevel admin
-
-
-;--------------------------------
 
 ; Installer pages
 Page directory
@@ -28,45 +36,81 @@ Page instfiles
 UninstPage uninstConfirm
 UninstPage instfiles
 
-;--------------------------------
-
-
 Section "Installer"
+  SetAutoClose true
+  AddSize 8
 
   ; Set output path to the installation directory.
   SetOutPath $INSTDIR
 
-  ; Put file there
-  File ..\bin\Release\EdgeDeflector.exe
+  ; Install the program
+  File "..\bin\Release\${PRODUCT}.exe"
 
-  ; Self-registeres to the registry
-  ExecWait '$INSTDIR\${PRODUCT}.exe'
+  ; Path registration
+  WriteRegStr HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\${PRODUCT}.exe" "" "$INSTDIR\${PRODUCT}.exe"
+  WriteRegStr HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\${PRODUCT}.exe" "Path" "$INSTDIR"
+  WriteRegStr HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\${PRODUCT}.exe" "SupportedProtocols" "microsoft-edge"
+  WriteRegDWORD HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\${PRODUCT}.exe" "useURL" 1
 
-  ; Write the installation path to the registry
-  WriteRegStr HKLM SOFTWARE\${PRODUCT} "Install_Dir" "$INSTDIR"
-  
-  ; Write the uninstall keys to the registry
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT}" "DisplayName" "${PRODUCT}"
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT}" "UninstallString" '"$INSTDIR\${PRODUCT}_uninstall.exe"'
-  WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT}" "NoModify" 1
-  WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT}" "NoRepair" 1
+  ; Register protocol
+  WriteRegStr HKCU "SOFTWARE\Classes\${PRODUCT}.microsoft-edge" "" "URL: MICROSOFT-EDGE"
+  WriteRegStr HKCU "SOFTWARE\Classes\${PRODUCT}.microsoft-edge" "URL Protocol" ""
+  WriteRegStr HKCU "SOFTWARE\Classes\${PRODUCT}.microsoft-edge\shell\open\command" "" "$INSTDIR\${PRODUCT}.exe %1"
+
+  ; Program class registration
+  WriteRegStr HKCU "SOFTWARE\Classes\${PRODUCT}\Application" "ApplicationName" "${PRODUCT}"
+  WriteRegStr HKCU "SOFTWARE\Classes\${PRODUCT}\DefaultIcon" "" "$INSTDIR\${PRODUCT}.exe,0"
+  WriteRegStr HKCU "SOFTWARE\Classes\${PRODUCT}\shell\open\command" "" "$INSTDIR\${PRODUCT}.exe %1"
+  WriteRegStr HKCU "SOFTWARE\Classes\${PRODUCT}\Capabilities" "ApplicationName" "${PRODUCT}"
+  WriteRegStr HKCU "SOFTWARE\Classes\${PRODUCT}\Capabilities" "ApplicationIcon" $INSTDIR\${PRODUCT}.exe,0"
+  WriteRegStr HKCU "SOFTWARE\Classes\${PRODUCT}\Capabilities" "ApplicationDescription" "${DESCRIPTION}"
+  WriteRegStr HKCU "SOFTWARE\Classes\${PRODUCT}\Capabilities\UrlAssociations" "microsoft-edge" "${PRODUCT}.microsoft-edge"
+
+  ; Application registration
+  WriteRegStr HKCU "SOFTWARE\Classes\Applications\${PRODUCT}.exe\DefaultIcon" "" "$INSTDIR\${PRODUCT}.exe,0"
+
+  ; Program registration
+  WriteRegStr HKCU "SOFTWARE\RegisteredApplications" "${PRODUCT}" "SOFTWARE\Classes\${PRODUCT}\Capabilities"
+
+  ; Install the uninstaller
   WriteUninstaller "${PRODUCT}_uninstall.exe"
 
-  ExecShell "open" "microsoft-edge:https://www.daniel.priv.no/tools/edgedeflector/post-install.html"
+  ; Register the uninstaller
+  WriteRegStr HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT}" "DisplayName" "${PRODUCT}"
+  WriteRegStr HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT}" "DisplayIcon" "$INSTDIR\${PRODUCT}.exe,0"
+  WriteRegStr HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT}" "DisplayVersion" "${VERSION_1}.${VERSION_2}.${VERSION_3}.${VERSION_4}"
 
+  WriteRegStr HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT}" "InstallLocation" "$INSTDIR"
+  WriteRegStr HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT}" "UninstallString" "$INSTDIR\${PRODUCT}_uninstall.exe"
+
+  WriteRegDWORD HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT}" "NoModify" 1
+  WriteRegDWORD HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT}" "NoRepair" 1
+
+  ; Estimated installation size
+  SectionGetSize 0 $0
+  WriteRegDWORD HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT}" "EstimatedSize" $0
 SectionEnd
+
+Function .onInstSuccess
+  ; Open manual installation steps
+  ExecShell "open" "microsoft-edge:https://www.daniel.priv.no/tools/edgedeflector/post-install.html"
+FunctionEnd
 
 ;--------------------------------
 
 
 Section "Uninstall"
+  ; Remove program
+  Delete "$INSTDIR\${PRODUCT}.exe"
 
   ; Remove registry keys
-  DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT}"
-  DeleteRegKey HKLM SOFTWARE\${PRODUCT}
+  DeleteRegKey HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\${PRODUCT}.exe"
+  DeleteRegKey HKCU "SOFTWARE\Classes\${PRODUCT}"
+  DeleteRegKey HKCU "SOFTWARE\Classes\${PRODUCT}.microsoft-edge"
+  DeleteRegKey HKCU "SOFTWARE\Classes\Applications\${PRODUCT}.exe"
+  DeleteRegValue HKCU "SOFTWARE\RegisteredApplications" "${PRODUCT}"
 
-  ; Remove files and uninstaller
-  Delete $INSTDIR\${PRODUCT}.exe
-  Delete $INSTDIR\${PRODUCT}_uninstall.exe
-
+  ; Remove uninstaller
+  DeleteRegKey HKCU "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT}"
+  Delete "$INSTDIR\${PRODUCT}_uninstall.exe"
 SectionEnd
