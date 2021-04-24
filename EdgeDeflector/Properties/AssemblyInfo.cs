@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("EdgeDeflector")]
-[assembly: AssemblyDescription("Rewrites microsoft-edge URI addresses into standard http URI addresses.")]
+[assembly: AssemblyDescription("Open MICROSOFT-EDGE:// links in your default web browser.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("EdgeDeflector")]
