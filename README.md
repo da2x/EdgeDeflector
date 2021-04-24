@@ -6,18 +6,15 @@ You’ll never see EdgeDeflector ever again after installing it. It does its thi
 
 System requirements: Windows 10, and your favorite web browser.
 
-Read more about [how EdgeDeflector works](https://www.ctrl.blog/entry/edgedeflector-default-browser) and why it was created.
+Read more about [how EdgeDeflector works](https://www.ctrl.blog/entry/edgedeflector-default-browser.html) and why it was created.
 
 # Installation
 
   1. **Download** the latest version of EdgeDeflector from [GitHub releases](https://github.com/da2x/EdgeDeflector/releases)
-  2. Run the installer once to configure your system
+  2. Run the installer.
+  3. The installer will open a page that guides you through some manual installation steps.
 
-You may need to **repeat the above steps after installing major feature updates to Windows** through Windows Update. You can subscribe to the [AppCast feed](https://github.com/da2x/EdgeDeflector/releases.atom) to be notified of any new releases.
-
-If you dismiss the initial dialog to choose to use EdgeDeflector, or choose the wrong app; you can apply the change  in the Windows Settings app: Apps: Default apps: Choose default apps by protocol: microsoft-edge.
-
-If EdgeDeflector isn’t listed in either locations, try running it one more time; or lastly restarting your PC before you try again. (This last option actually helps if the System Registry is locked up or Windows is being stubborn.)
+You may need to **repeat the above steps after installing major feature updates to Windows** through Windows Update.
 
 You don’t need to specify your browser of choice in EdgeDeflector. It will pick up on the system configured default from Windows Settings app: Apps: Default apps: Web browser.
 
@@ -25,7 +22,7 @@ You don’t need to specify your browser of choice in EdgeDeflector. It will pic
 
 ## It isn’t working!
 
-Try [these troubleshooting steps](https://github.com/da2x/EdgeDeflector/wiki/Troubleshooting).
+Please reinstall and follow the insutrctions on the page that opens after the installer has finished.
 
 ## Will searches inside Cortana still use Bing?
 
@@ -41,4 +38,4 @@ Yes it does, but no. Everything is done on your local computer. EdgeDeflector re
 
 ## How do I uninstall EdgeDeflector?
 
-By following [these instructions](https://github.com/da2x/EdgeDeflector/wiki/Uninstall).
+From Add and Remove Programs in the Windows Settings app.
