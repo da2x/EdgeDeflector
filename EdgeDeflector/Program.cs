@@ -59,7 +59,7 @@ namespace EdgeDeflector
 
         static string RewriteMsEdgeUriSchema(string uri)
         {
-            string search_engine_name = "Google";
+            string search_engine_name = "Google";  // WIP, hardcoded.
             string msedge_protocol_pattern = "^microsoft-edge:/*";
 
             Regex rgx = new Regex(msedge_protocol_pattern);
@@ -99,9 +99,9 @@ namespace EdgeDeflector
 
             switch (searchEngineName)
             {
-                case "Google":
+                case "Google":  // Hardcoded on `RewriteMsEdgeUriSchema`.
                     return ReplaceQuery(uri, "google.com/search?q=");
-                case "DuckDuckGo":
+                case "DuckDuckGo":  // WIP.
                     return ReplaceQuery(uri, "duckduckgo.com/?q=");
                 default:
                     return uri;
