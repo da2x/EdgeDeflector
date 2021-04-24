@@ -36,4 +36,4 @@ Yes, actually that's why I created this project by forking [EdgeDeflector](https
 
 From Add and Remove Programs in the Windows Settings app.
 
-**NOTE: program name is `EdgeDeflector` (not `EdgeAndBingDeflector`).**
+**NOTE: in your system, program name is `EdgeDeflector` (not `EdgeAndBingDeflector`).**
