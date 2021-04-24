@@ -1,5 +1,6 @@
 /*
  * Copyright © 2017–2021 Daniel Aleksandersen
+ * Copyright © 2021–present Hadi Alqattan
  * SPDX-License-Identifier: MIT
  * License-Filename: LICENSE
  */
