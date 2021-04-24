@@ -1,5 +1,7 @@
 Unicode True
 
+RequestExecutionLevel user
+
 ; Installer for EdgeDeflector
 
 BrandingText " "
