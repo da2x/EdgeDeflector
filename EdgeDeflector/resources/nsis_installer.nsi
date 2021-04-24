@@ -7,7 +7,7 @@ RequestExecutionLevel user
 BrandingText " "
 
 !define PRODUCT "EdgeDeflector"
-!define DESCRIPTION "Open MICROSOFT-EDGE:// links in your default web browser."
+!define DESCRIPTION "Open MICROSOFT-EDGE:// links in your default web browser and search engine."
 
 !getdllversion "..\bin\Release\${PRODUCT}.exe" VERSION_
 
