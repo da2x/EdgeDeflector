@@ -21,16 +21,15 @@ namespace EdgeDeflector
             try
             {
                 Uri uri = new Uri(uristring);
-                return uri.IsWellFormedOriginalString();
+                return true;
             }
             catch (System.UriFormatException)
             {
-                return false;
             }
             catch (ArgumentNullException)
             {
-                return false;
             }
+            return false;
         }
 
         static bool IsHttpUri(string uri)
