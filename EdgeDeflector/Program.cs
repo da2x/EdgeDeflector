@@ -35,7 +35,7 @@ namespace EdgeDeflector
         static bool IsHttpUri(string uri)
         {
             uri = uri.ToUpperInvariant();
-            return uri.StartsWith("HTTP://", StringComparison.OrdinalIgnoreCase) || uri.StartsWith("HTTPS://", StringComparison.OrdinalIgnoreCase);
+            return uri.StartsWith("HTTPS://", StringComparison.OrdinalIgnoreCase) || uri.StartsWith("HTTP://", StringComparison.OrdinalIgnoreCase);
         }
 
         static bool IsMsEdgeUri(string uri)
