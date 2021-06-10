@@ -4,11 +4,9 @@
  * License-Filename: LICENSE
  */
 
-using Microsoft.Win32;
 using System;
 using System.Collections.Specialized;
 using System.Diagnostics;
-using System.Security.Principal;
 using System.Text.RegularExpressions;
 using System.Web;
 
@@ -23,7 +21,7 @@ namespace EdgeDeflector
                 Uri uri = new Uri(uristring);
                 return true;
             }
-            catch (System.UriFormatException)
+            catch (UriFormatException)
             {
             }
             catch (ArgumentNullException)
@@ -34,13 +32,11 @@ namespace EdgeDeflector
 
         static bool IsHttpUri(string uri)
         {
-            uri = uri.ToUpperInvariant();
             return uri.StartsWith("HTTPS://", StringComparison.OrdinalIgnoreCase) || uri.StartsWith("HTTP://", StringComparison.OrdinalIgnoreCase);
         }
 
         static bool IsMsEdgeUri(string uri)
         {
-            uri = uri.ToUpperInvariant();
             return uri.StartsWith("MICROSOFT-EDGE:", StringComparison.OrdinalIgnoreCase) && !uri.Contains(" ");
         }
 
@@ -89,9 +85,8 @@ namespace EdgeDeflector
                 Environment.Exit(1);
             }
 
-            ProcessStartInfo launcher = new ProcessStartInfo()
+            ProcessStartInfo launcher = new ProcessStartInfo(uri)
             {
-                FileName = uri,
                 UseShellExecute = true
             };
             Process.Start(launcher);
