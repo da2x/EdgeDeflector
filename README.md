@@ -1,3 +1,5 @@
+[![Maintainability](https://cloud.quality-gate.com/dashboard/api/badge?projectName=ACP-DA2EDGTOR&branchName=master)](https://cloud.quality-gate.com/dashboard/branches/567131#overview)
+
 # EdgeDeflector
 
 *EdgeDeflector* is  a small helper application that intercepts URIs that force-open web links in Microsoft Edge and redirects it to the system’s default web browser. This allows you to use Windows features like the Cortana assistant and built-in help links with the browser of your choice instead of being forced to use Microsoft Edge. With EdgeDeflector, you’re free to use Firefox, Google Chrome, or whatever your favorite web browser might be!
