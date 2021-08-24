@@ -64,7 +64,7 @@ Section "Installer"
   WriteRegStr HKCU "SOFTWARE\Classes\${PRODUCT}\DefaultIcon" "" "$INSTDIR\${PRODUCT}.exe,0"
   WriteRegStr HKCU "SOFTWARE\Classes\${PRODUCT}\shell\open\command" "" "$INSTDIR\${PRODUCT}.exe %1"
   WriteRegStr HKCU "SOFTWARE\Classes\${PRODUCT}\Capabilities" "ApplicationName" "${PRODUCT}"
-  WriteRegStr HKCU "SOFTWARE\Classes\${PRODUCT}\Capabilities" "ApplicationIcon" $INSTDIR\${PRODUCT}.exe,0"
+  WriteRegStr HKCU "SOFTWARE\Classes\${PRODUCT}\Capabilities" "ApplicationIcon" "$INSTDIR\${PRODUCT}.exe,0"
   WriteRegStr HKCU "SOFTWARE\Classes\${PRODUCT}\Capabilities" "ApplicationDescription" "${DESCRIPTION}"
   WriteRegStr HKCU "SOFTWARE\Classes\${PRODUCT}\Capabilities\UrlAssociations" "microsoft-edge" "${PRODUCT}.microsoft-edge"
 
