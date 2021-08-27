@@ -57,12 +57,12 @@ Section "Installer"
   ; Register protocol
   WriteRegStr HKCU "SOFTWARE\Classes\${PRODUCT}.microsoft-edge" "" "URL: MICROSOFT-EDGE"
   WriteRegStr HKCU "SOFTWARE\Classes\${PRODUCT}.microsoft-edge" "URL Protocol" ""
-  WriteRegStr HKCU "SOFTWARE\Classes\${PRODUCT}.microsoft-edge\shell\open\command" "" "$INSTDIR\${PRODUCT}.exe %1"
+  WriteRegStr HKCU "SOFTWARE\Classes\${PRODUCT}.microsoft-edge\shell\open\command" "" '"$INSTDIR\${PRODUCT}.exe" "%1"'
 
   ; Program class registration
   WriteRegStr HKCU "SOFTWARE\Classes\${PRODUCT}\Application" "ApplicationName" "${PRODUCT}"
   WriteRegStr HKCU "SOFTWARE\Classes\${PRODUCT}\DefaultIcon" "" "$INSTDIR\${PRODUCT}.exe,0"
-  WriteRegStr HKCU "SOFTWARE\Classes\${PRODUCT}\shell\open\command" "" "$INSTDIR\${PRODUCT}.exe %1"
+  WriteRegStr HKCU "SOFTWARE\Classes\${PRODUCT}\shell\open\command" "" '"$INSTDIR\${PRODUCT}.exe" "%1"'
   WriteRegStr HKCU "SOFTWARE\Classes\${PRODUCT}\Capabilities" "ApplicationName" "${PRODUCT}"
   WriteRegStr HKCU "SOFTWARE\Classes\${PRODUCT}\Capabilities" "ApplicationIcon" "$INSTDIR\${PRODUCT}.exe,0"
   WriteRegStr HKCU "SOFTWARE\Classes\${PRODUCT}\Capabilities" "ApplicationDescription" "${DESCRIPTION}"
