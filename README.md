@@ -22,7 +22,7 @@ You don’t need to specify your browser of choice in EdgeDeflector. It will pic
 
 ## It isn’t working!
 
-Please reinstall and follow the insutrctions on the page that opens after the installer has finished.
+Please reinstall and [follow the insutrctions](https://www.daniel.priv.no/tools/edgedeflector/post-install.html) shown after the installer has finished.
 
 ## Will searches inside Cortana still use Bing?
 
