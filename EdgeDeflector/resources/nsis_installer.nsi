@@ -1,4 +1,5 @@
-Unicode True
+﻿Unicode true
+; UTF-8 BOM!
 
 RequestExecutionLevel user
 
