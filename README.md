@@ -1,6 +1,8 @@
+🛑 **Discontinued** because [Microsoft sabotaged the project](https://www.ctrl.blog/entry/microsoft-edge-protocol-competition.html).
+
 # EdgeDeflector
 
-*EdgeDeflector* is  a small helper application that intercepts URIs that force-open web links in Microsoft Edge and redirects it to the system’s default web browser. This allows you to use Windows features like the Cortana assistant and built-in help links with the browser of your choice instead of being forced to use Microsoft Edge. With EdgeDeflector, you’re free to use Firefox, Google Chrome, or whatever your favorite web browser might be!
+*EdgeDeflector* was a small helper application that intercepted URIs that force-open web links in Microsoft Edge and redirected it to the system’s default web browser. This allowed you to use Windows features like the Cortana assistant and built-in help links with the browser of your choice instead of being forced to use Microsoft Edge. With EdgeDeflector, you were free to use Firefox, Google Chrome, or whatever your favorite web browser might be!
 
 You’ll never see EdgeDeflector ever again after installing it. It does its thing transparently in the background and only runs when a link needs to be deflected away from Microsoft Edge.
 
